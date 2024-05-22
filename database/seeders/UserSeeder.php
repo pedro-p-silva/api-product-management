@@ -44,7 +44,7 @@ class UserSeeder extends Seeder
                 'name' => 'Api Manage Products',
                 'email' => 'aplicacao.test@gmail.com',
                 'password' => Hash::make('Pedro@2314'),
-                'status' => 5
+                'status' => 1
             ],
 
         ];
