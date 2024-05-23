@@ -28,7 +28,7 @@ class AuthController extends Controller
      */
     public function generate_token(Request $request): JsonResponse
     {
-        if ($this->validateStatusUser() != 1){
+        if ($this->validateStatusUser($request) != 1){
             return response()->json(['error' => 'Not token (Inactive login)'], 401);
         }
 
@@ -49,7 +49,7 @@ class AuthController extends Controller
      */
     public function refresh_token(Request $request): JsonResponse
     {
-        if ($this->validateStatusUser() != 1){
+        if ($this->validateStatusUser($request) != 1){
             return response()->json(['error' => 'Not refresh (Inactive login)'], 401);
         }
 
@@ -103,9 +103,13 @@ class AuthController extends Controller
         ]);
     }
 
-    private function validateStatusUser()
+    private function validateStatusUser($request)
     {
-        $status_user = UserModel::query()->select('name', 'status')->first();
+        $status_user = UserModel::query()
+            ->select('name', 'status')
+            ->where('email', '=', $request->only('email'))
+            ->first();
+
         return $status_user->status;
     }
 }
