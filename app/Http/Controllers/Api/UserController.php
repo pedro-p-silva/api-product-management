@@ -38,7 +38,7 @@ class UserController extends Controller
             return response()->json($result);
         }
 
-        return response()->json($this->user->query()->paginate(5));
+        return response()->json($this->user->all());
     }
 
     public function getUserById($id): JsonResponse

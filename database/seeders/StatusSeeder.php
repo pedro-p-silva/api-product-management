@@ -8,29 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class StatusSeeder extends Seeder
 {
-
-    private function dataStatus(): array
-    {
-        return [
-            [
-                'name' => 'Ativo',
-            ],
-
-            [
-                'name' => 'Inativo',
-            ],
-
-            [
-                'name' => 'Bloqueado',
-            ],
-
-            [
-                'name' => 'Licença Maternidade',
-            ]
-
-        ];
-    }
-
     /**
      * Run the database seeds.
      *
@@ -41,11 +18,6 @@ class StatusSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=0');
 
         StatusModel::truncate();
-
-        foreach ($this->dataStatus() as $status) {
-            StatusModel::create([
-                'name' => $status['name']
-            ]);
-        }
+        StatusModel::factory()->count(5)->create();
     }
 }

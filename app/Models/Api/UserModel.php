@@ -2,6 +2,7 @@
 
 namespace App\Models\Api;
 
+use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -13,6 +14,17 @@ class UserModel extends Authenticatable implements JWTSubject
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'users';
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+
+    protected static function newFactory()
+    {
+        return UserFactory::new();
+    }
 
     /**
      * The attributes that are mass assignable.

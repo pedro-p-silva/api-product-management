@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Helpers\HelperMessages;
 use App\Http\Controllers\Controller;
+use App\Models\Api\StatusModel;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Api\StatusModel;
 
 class StatusController extends Controller
 {
