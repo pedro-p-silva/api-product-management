@@ -22,7 +22,7 @@ Route::post('auth/generate-token', [AuthController::class, 'generate_token']);
 Route::post('auth/refresh-token', [AuthController::class, 'refresh_token']);
 Route::post('auth/logout-token', [AuthController::class, 'logout_token']);
 
-//Route::group(['middleware' => ['apiJwt']], function () {
+Route::group(['middleware' => ['apiJwt']], function () {
     Route::post('auth/authenticated-user-token', [AuthController::class, 'me']);
 
     Route::get('status', [StatusController::class, 'getStatus']);
@@ -42,4 +42,4 @@ Route::post('auth/logout-token', [AuthController::class, 'logout_token']);
     Route::post('product/edit/{id}', [ProductController::class, 'putProductById']);
     Route::post('product/patch/{id}', [ProductController::class, 'patchUserById']);
     Route::delete('product/delete/{id}', [ProductController::class, 'removeProductById']);
-//});
+});
