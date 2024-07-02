@@ -29,12 +29,12 @@ Route::group(['middleware' => ['apiJwt']], function () {
     Route::post('status/create', [StatusController::class, 'createStatus']);
 
     Route::get('users', [UserController::class, 'getUsers']);
-    Route::post('user/create', [UserController::class, 'createUser']);
-    Route::get('user/{id}', [UserController::class, 'getUserById']);
-    Route::put('user/edit/{id}', [UserController::class, 'putUserById']);
-    Route::delete('user/delete/{id}', [UserController::class, 'removeUserById']);
+    Route::get('users/{id}', [UserController::class, 'getUserById']);
+    Route::post('users', [UserController::class, 'createUser']);
+    Route::put('users/{id}', [UserController::class, 'putUserById']);
+    Route::delete('users/{id}', [UserController::class, 'removeUserById']);
 
-    Route::post('category/create', [CategoryController::class, 'createCategory']);
+    Route::post('categories', [CategoryController::class, 'createCategory']);
 
     Route::get('products', [ProductController::class, 'getProducts']);
     Route::post('product/create', [ProductController::class, 'createProduct']);

@@ -22,11 +22,11 @@ class ApiProtectRoute
         try {
             JWTAuth::parseToken()->authenticate();
         } catch (TokenInvalidException $e) {
-            return response()->json(['status' => 'Token is Invalid']);
+            return response()->json(['message' => 'Token is Invalid'], 401);
         } catch (TokenExpiredException $e) {
-            return response()->json(['status' => 'Token is Expired']);
+            return response()->json(['message' => 'Token is Expired'], 401);
         } catch (\Exception $e) {
-            return response()->json(['status' => 'Authorization Token not found']);
+            return response()->json(['message' => 'Authorization Token not found'], 401);
         }
 
         return $next($request);

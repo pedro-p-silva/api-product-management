@@ -28,14 +28,18 @@ class AuthController extends Controller
      */
     public function generate_token(Request $request): JsonResponse
     {
+        if ($this->validateEmailUser($request) == 0){
+            return response()->json(['message' => 'Not Found E-mail'], 404);
+        };
+
         if ($this->validateStatusUser($request) != 1){
-            return response()->json(['error' => 'Not token (Inactive login)'], 401);
+            return response()->json(['message' => 'Not token (Inactive login)'], 401);
         }
 
         $credentials = $request->only(['email', 'password']);
 
         if (!$token = auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['message' => 'Unauthorized'], 401);
         }
 
         return $this->respondWithToken($token);
@@ -49,14 +53,18 @@ class AuthController extends Controller
      */
     public function refresh_token(Request $request): JsonResponse
     {
+        if ($this->validateEmailUser($request) == 0){
+            return response()->json(['message' => 'Not Found E-mail'], 404);
+        };
+
         if ($this->validateStatusUser($request) != 1){
-            return response()->json(['error' => 'Not refresh (Inactive login)'], 401);
+            return response()->json(['message' => 'Not refresh (Inactive login)'], 401);
         }
 
         $credentials = $request->only(['email', 'password']);
 
         if (!auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['message' => 'Unauthorized'], 401);
         }
 
         $token = JWTAuth::parseToken()->refresh(true);
@@ -72,7 +80,7 @@ class AuthController extends Controller
             return $refresh_token;
         }
 
-        return response()->json(['error' => 'Error generate refresh token']);
+        return response()->json(['message' => 'Error generate refresh token']);
     }
 
     /**
@@ -101,6 +109,14 @@ class AuthController extends Controller
             'token_type' => 'bearer',
             'expires_in' => auth('api')->factory()->getTTL() * 60
         ]);
+    }
+
+    private function validateEmailUser($request): int
+    {
+        return UserModel::query()
+            ->select('email')
+            ->where('email', '=', $request->only('email'))
+            ->count();
     }
 
     private function validateStatusUser($request)
