@@ -26,7 +26,7 @@ Route::group(['middleware' => ['apiJwt']], function () {
     Route::post('auth/authenticated-user-token', [AuthController::class, 'me']);
 
     Route::get('status', [StatusController::class, 'getStatus']);
-    Route::post('status/create', [StatusController::class, 'createStatus']);
+    Route::post('status', [StatusController::class, 'createStatus']);
 
     Route::get('users', [UserController::class, 'getUsers']);
     Route::get('users/{id}', [UserController::class, 'getUserById']);
@@ -37,9 +37,9 @@ Route::group(['middleware' => ['apiJwt']], function () {
     Route::post('categories', [CategoryController::class, 'createCategory']);
 
     Route::get('products', [ProductController::class, 'getProducts']);
-    Route::post('product/create', [ProductController::class, 'createProduct']);
-    Route::get('product/{id}', [ProductController::class, 'getProductById']);
-    Route::post('product/edit/{id}', [ProductController::class, 'putProductById']);
-    Route::post('product/patch/{id}', [ProductController::class, 'patchUserById']);
-    Route::delete('product/delete/{id}', [ProductController::class, 'removeProductById']);
+    Route::get('products/{id}', [ProductController::class, 'getProductById']);
+    Route::post('products', [ProductController::class, 'createProduct']);
+    Route::post('products/put/{id}', [ProductController::class, 'putProductById']);
+    Route::post('products/patch/{id}', [ProductController::class, 'patchUserById']);
+    Route::delete('products/{id}', [ProductController::class, 'removeProductById']);
 });
