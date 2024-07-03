@@ -1,64 +1,88 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
-
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img width="460" height="350" src="https://pedropsilva.com.br/images/portfolio/projects/project_two.png">
 </p>
 
-## About Laravel
+# API Product Management
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/pedro-p-silva/api-product-management/blob/main/LICENSE)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Essa API foi desenvolvida para aplicar alguns dos meus conhecimentos utilizando o framework Laravel. Com esse serviço, é possível efetuar o gerenciamento de produtos, podendo efetuar o cadastro, buscas avançadas, edições e exclusões desses produtos.<br>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Nesse projeto, foi utilizada a forma de autenticação JSON Web Token (JWT), visando uma maior segurança na troca de informações na WEB.<br>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Para uma maior facilidade em efetuar validações locais, os seeders e factories foram também previamente configurados, deste modo, para outros desenvolvedores que clonarem o projeto, não existe a necessidade de cadastrar os dados manualmente ao criar as migrations.
 
-## Learning Laravel
+Importante salientar, quando um novo usuário é criado na API, um e-mail será disparado para ele, nesse ponto, foi utilizado o serviço de fila, isso foi pensado pois o usuário não precisará aguardar a resposta do servidor de e-mail, o que pode levar um certo tempo e impactar a experiência do usuário. Assim é só configurar um tempo para que as tarefas paradas na fila sejam executadas, e os e-mail serão disparados posteriormente.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## APIs utilizadas
+* API para consultar usuários:<br>
+  https://api.github.com/users/${name} [name] = Nome de usuário do GitHub, por exemplo (pedro-p-silva).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* API para consultar repositórios:<br>
+https://api.github.com/users/${name}/repos [name] = Nome de usuário do GitHub.<br><br>
 
-## Laravel Sponsors
+## Acessar o projeto
+Veja: [Github Profile](https://github-profiles-ps.netlify.app/)
+<br><br>
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Algumas IDEs recomendadas
 
-### Premium Partners
+* [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (desabilitar o Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+* [WebStorm](https://www.jetbrains.com/pt-br/webstorm/)<br><br>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Customizar Configurações
 
-## Contributing
+Veja: [Vite Configuration Reference](https://vitejs.dev/config/).<br><br>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Configurações do projeto
 
-## Code of Conduct
+### Clonar o projeto
+```sh
+git clone https://github.com/pedro-p-silva/api-product-management.git
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Instalar o gerenciador de pacotes
 
-## Security Vulnerabilities
+```sh
+npm install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Duplicar o arquivo .env.example e renomear o arquivo duplicado para ".env". Posteriormente, adicionar as informações de conexão do banco de dados no arquivo renomeado.<br>
 
-## License
+### Instalar o gerenciador de dependências
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```sh
+composer install
+```
+
+### Gerando a chave APP_KEY no arquivo .env
+
+```sh
+php artisan key:generate
+```
+
+### Gerando a secret do JWT
+
+```sh
+php artisan jwt:secret
+```
+
+### Migração das tabelas do banco de dados
+
+```sh
+php artisan migrate
+```
+
+### Populando as tabelas migradas
+
+```sh
+php artisan db:seed
+```
+<br>
+
+## Skills utilizadas
+<div style="display: inline_block">
+  <img align="center" title="Typescript" alt="Pedro-Ts" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
+  <img align="center" title="Vue.js" alt="Pedro-Vue" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg">
+  <img align="center" title="HTML 5" alt="Pedro-HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+  <img align="center" title="CSS 3" alt="Pedro-CSS" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
+</div>
