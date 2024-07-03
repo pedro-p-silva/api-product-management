@@ -22,7 +22,7 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->name,
             'description' => $this->faker->domainWord,
-            'category' => $this->faker->numberBetween(1,5),
+            'categories' => $this->faker->numberBetween(1,5),
             'quantity' => $this->faker->randomNumber(),
             'manufacturer' => $this->faker->company(),
             'photo_path' => "public/product_image/SeederTest 13.05.24_1715731505.jpeg",

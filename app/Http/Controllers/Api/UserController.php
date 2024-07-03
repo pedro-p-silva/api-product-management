@@ -11,8 +11,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\RegisterUser;
+use App\Jobs\UserRegister;
 
 class UserController extends Controller
 {
@@ -83,8 +82,8 @@ class UserController extends Controller
                 ]
             );
 
-            if ($createUser){
-                Mail::send(new RegisterUser((object)$createUser));
+            if ($createUser) {
+                UserRegister::dispatch($createUser)->delay(now()->addSeconds(60));
             }
         } catch (\Exception $e) {
             return $this->helperMessage::msgDatabaseExceptions();
