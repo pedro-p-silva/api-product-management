@@ -10,7 +10,7 @@ class CategoryModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'category';
+    protected $table = 'categories';
 
     /**
      * Create a new factory instance for the model.

@@ -10,7 +10,7 @@ class ProductModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'product';
+    protected $table = 'products';
 
     /**
      * Create a new factory instance for the model.
