@@ -13,12 +13,18 @@ Para uma maior facilidade em efetuar validações locais, os seeders e factories
 
 Importante salientar, quando um novo usuário é criado na API, um e-mail será disparado para ele, nesse ponto, foi utilizado o serviço de fila, isso foi pensado pois o usuário não precisará aguardar a resposta do servidor de e-mail, o que pode levar um certo tempo e impactar a experiência do usuário. Deste modo, é só configurar um job para que as tarefas paradas na fila sejam executadas, e os e-mails serão disparados posteriormente.<br><br>
 
-## Documentação da API (Swagger UI)
+## Documentação local da API (Swagger UI)
 Nessa etapa, é importante que você possua o docker instalado. A documentação da API, pode ser acessada utilizando a seguinte imagem:
 ```sh
 docker run -p 80:8080 -e SWAGGER_JSON_URL=https://gist.githubusercontent.com/pedro-p-silva/4cfc285c568c0a40af162a94ced9dadd/raw/a448bb01e917c4f493a43aa95d95eff2fbd65401/openapi.json swaggerapi/swagger-ui
 ```
-<br>
+
+### Imagem
+![Docker Image](https://github.com/pedro-p-silva/api-product-management/assets/98651810/1c5607a7-87d5-4687-991c-e78222c0513e)
+
+### Página documentação
+![API Doc](https://github.com/pedro-p-silva/api-product-management/assets/98651810/d86e1617-f3b2-4f50-89a9-38a8b85b1aea)
+<br><br>
 
 ## Algumas IDEs recomendadas
 
