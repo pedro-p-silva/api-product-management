@@ -5,7 +5,7 @@
 # API Product Management
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/pedro-p-silva/api-product-management/blob/main/LICENSE)
 
-Essa API foi desenvolvida para aplicar alguns dos meus conhecimentos utilizando o framework Laravel. Com esse serviço, é possível efetuar o gerenciamento de produtos, podendo efetuar o cadastro, buscas avançadas, edições e exclusões desses produtos.<br>
+Essa API foi desenvolvida utilizando a arquitetura REST. A ideia é aplicar alguns dos meus conhecimentos utilizando o framework Laravel. Com esse serviço, é possível efetuar o gerenciamento de produtos, cadastro, buscas avançadas, edições e exclusões.<br>
 
 Nesse projeto, foi utilizada a forma de autenticação JSON Web Token (JWT), visando uma maior segurança na troca de informações na WEB.<br>
 
