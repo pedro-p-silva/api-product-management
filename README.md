@@ -16,7 +16,7 @@ Importante salientar, quando um novo usuário é criado na API, um e-mail será 
 ## Documentação local da API (Swagger UI)
 Nessa etapa, é importante que você possua o docker instalado. A documentação da API, pode ser acessada utilizando a seguinte imagem:
 ```sh
-docker run -p 80:8080 -e SWAGGER_JSON_URL=https://gist.githubusercontent.com/pedro-p-silva/4cfc285c568c0a40af162a94ced9dadd/raw/a448bb01e917c4f493a43aa95d95eff2fbd65401/openapi.json swaggerapi/swagger-ui
+docker run -p 80:8080 -e SWAGGER_JSON_URL=https://gist.githubusercontent.com/pedro-p-silva/4cfc285c568c0a40af162a94ced9dadd/raw/c6ad76a136d0d5f75885ff40137d4824497b3c95/openapi.json swaggerapi/swagger-ui
 ```
 
 ### Imagem
