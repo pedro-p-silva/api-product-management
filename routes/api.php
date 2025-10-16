@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('v1')->group(function () {
+    Route::post('/users', [UserController::class, 'createUser']);
     Route::post('login', [AuthController::class, 'login']);
 
     Route::middleware('jwt.auth')->group(function () {
@@ -27,7 +28,6 @@ Route::prefix('v1')->group(function () {
         Route::prefix('users')->group(function () {
             Route::get('/', [UserController::class, 'getUsers']);
             Route::get('/{id}', [UserController::class, 'getUserById']);
-            Route::post('/', [UserController::class, 'createUser']);
             Route::put('/{id}', [UserController::class, 'updateUser']);
             Route::delete('/{id}', [UserController::class, 'deleteUser']);
         });
