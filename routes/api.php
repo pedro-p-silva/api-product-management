@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -15,18 +16,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('users')->group(function () {
-    Route::get('/', [UserController::class, 'getUsers']);
-    Route::get('/{id}', [UserController::class, 'getUserById']);
-    Route::post('/', [UserController::class, 'createUser']);
-    Route::put('/{id}', [UserController::class, 'updateUser']);
-    Route::delete('/{id}', [UserController::class, 'deleteUser']);
-});
+Route::prefix('v1')->group(function () {
+    Route::post('login', [AuthController::class, 'login']);
 
-Route::prefix('products')->group(function () {
-    Route::get('/', [ProductController::class, 'getProducts']);
-    Route::get('/{id}', [ProductController::class, 'getProductById']);
-    Route::post('/', [ProductController::class, 'createProduct']);
-    Route::put('/{id}', [ProductController::class, 'updateProduct']);
-    Route::delete('/{id}', [ProductController::class, 'deleteProduct']);
+    Route::middleware('jwt.auth')->group(function () {
+        Route::get('me', [AuthController::class, 'me']);
+        Route::post('logout', [AuthController::class, 'logout']);
+        Route::post('refresh', [AuthController::class, 'refresh']);
+
+        Route::prefix('users')->group(function () {
+            Route::get('/', [UserController::class, 'getUsers']);
+            Route::get('/{id}', [UserController::class, 'getUserById']);
+            Route::post('/', [UserController::class, 'createUser']);
+            Route::put('/{id}', [UserController::class, 'updateUser']);
+            Route::delete('/{id}', [UserController::class, 'deleteUser']);
+        });
+
+        Route::prefix('products')->group(function () {
+            Route::get('/', [ProductController::class, 'getProducts']);
+            Route::get('/{id}', [ProductController::class, 'getProductById']);
+            Route::post('/', [ProductController::class, 'createProduct']);
+            Route::put('/{id}', [ProductController::class, 'updateProduct']);
+            Route::delete('/{id}', [ProductController::class, 'deleteProduct']);
+        });
+    });
 });

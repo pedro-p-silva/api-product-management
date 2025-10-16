@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class JsonResponseMiddleware
 {
@@ -55,13 +54,13 @@ class JsonResponseMiddleware
     protected function defaultMessage(int $status): string
     {
         return match ($status) {
-            400 => 'Requisição inválida.',
-            401 => 'Não autorizado.',
-            403 => 'Acesso negado.',
-            404 => 'Recurso não encontrado.',
-            422 => 'Erro de validação.',
-            500 => 'Erro interno no servidor.',
-            default => 'Ocorreu um erro inesperado.',
+            400 => 'Invalid request.',
+            401 => 'Unauthorized.',
+            403 => 'Access denied.',
+            404 => 'Resource not found.',
+            422 => 'Validation error.',
+            500 => 'Internal server error.',
+            default => 'An unexpected error occurred.',
         };
     }
 
