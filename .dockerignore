@@ -1,0 +1,41 @@
+# Node / frontend
+node_modules
+npm-debug.log
+yarn-error.log
+dist
+public/build
+
+# PHP / Laravel
+vendor
+.env
+.env.*.backup
+storage/*.key
+storage/debugbar
+storage/framework/cache/data
+storage/framework/sessions
+storage/framework/views
+storage/logs
+bootstrap/cache
+
+# IDE / editor
+.idea
+.vscode
+*.sublime-project
+*.sublime-workspace
+*.swp
+.DS_Store
+Thumbs.db
+
+# Docker volumes / config (não copiar para imagem)
+.docker/nginx
+.docker/db_data
+
+# Outros arquivos temporários
+*.log
+*.tmp
+*.bak
+*.old
+
+# Git
+.git
+.gitignore
