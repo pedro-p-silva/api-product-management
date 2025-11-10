@@ -67,4 +67,6 @@ php artisan migrate
 php artisan jwt:secret
 ```
 
+🤝 Integrações
 
+Se estiver utilizando outros serviços integrados (como envio de e-mails, S3 ou SNS/SQS via LocalStack), lembre-se de configurar corretamente as variáveis de ambiente correspondentes no .env.
