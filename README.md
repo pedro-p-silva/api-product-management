@@ -1,4 +1,4 @@
-# ⚙️ API Event Publisher
+# 🌐 API Event Publisher
 
 Projeto desenvolvido em PHP com o framework Laravel, utilizando JWT (JSON Web Token) para autenticação e autorização de usuários.
 Todo o ambiente é configurável e executável via Docker, facilitando o setup local e a integração entre serviços.
@@ -70,4 +70,8 @@ php artisan jwt:secret
 ---
 ## 🤝 Integrações
 
-Se estiver utilizando outros serviços integrados (como envio de e-mails, S3 ou SNS/SQS via LocalStack), lembre-se de configurar corretamente as variáveis de ambiente correspondentes no .env.
+Este projeto é responsável por publicar notificações em um tópico SNS da AWS e por realizar o upload de imagens no S3 durante o processo de criação de um novo usuário.
+Para que essas funcionalidades funcionem corretamente, é necessário utilizar em conjunto o projeto [mail-consumer](https://github.com/pedro-p-silva/mail-consumer).
+A Mail Consumer é o serviço responsável por criar e configurar os recursos AWS necessários — como o tópico SNS, a fila SQS e o bucket S3 — além de validar e processar as mensagens recebidas na fila. Após o processamento, ele também é responsável por enviar o e-mail de boas-vindas ao novo usuário.
+
+Este projeto (api-event-publisher) atua como emissor dos eventos, sendo responsável por publicar as mensagens no tópico SNS e efetuar o upload da imagem de perfil do usuário no S3, permitindo assim a integração completa com a Mail Consumer.
