@@ -75,3 +75,8 @@ Para que essas funcionalidades funcionem corretamente, é necessário utilizar e
 A Mail Consumer é o serviço responsável por criar e configurar os recursos AWS necessários — como o tópico SNS, a fila SQS e o bucket S3 — além de validar e processar as mensagens recebidas na fila. Após o processamento, ele também é responsável por enviar o e-mail de boas-vindas ao novo usuário.
 
 Este projeto (api-event-publisher) atua como emissor dos eventos, sendo responsável por publicar as mensagens no tópico SNS e efetuar o upload da imagem de perfil do usuário no S3, permitindo assim a integração completa com a Mail Consumer.
+
+---
+## 📘 Documentação
+Consulte os endpoints e exemplos de requisições no link:
+[API Doc Swagger](http://localhost/api/documentation)
