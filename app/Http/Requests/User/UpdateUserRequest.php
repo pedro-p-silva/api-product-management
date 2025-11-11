@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class UpdateUserRequest extends FormRequest
 {
     public function authorize(): bool {
-        return true;
+        return auth()->check() && auth()->id() === (int) $this->route('id');
     }
 
     public function rules(): array
@@ -19,8 +19,8 @@ class UpdateUserRequest extends FormRequest
                 'email',
                 'unique:users,email,' . $this->route('id')
             ],
-            'password' => ['required', 'confirmed', 'min:8'],
-            'password_confirmation' => ['required', 'min:8']
+            'password' => ['required', 'min:8'],
+            'photo' => 'nullable|image|max:2048'
         ];
     }
 }

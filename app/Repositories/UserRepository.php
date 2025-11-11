@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\User;
 use App\Repositories\Interfaces\BaseRepositoryInterface;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 class UserRepository implements BaseRepositoryInterface
@@ -12,26 +11,26 @@ class UserRepository implements BaseRepositoryInterface
 
     public function getAll(): Collection
     {
-        return User::all();
+        return User::select('id', 'name', 'email', 'photo_path')->get();
     }
 
-    public function getById(int $id): Model
+    public function getById(int $id): User
     {
-        return User::query()->findOrFail($id);
+        return User::select('id', 'name', 'email', 'photo_path')->findOrFail($id);
     }
 
-    public function create(array $data): Model
+    public function create(array $data): User
     {
-        return User::query()->create($data);
+        return User::create($data);
     }
 
     public function update(int $id, array $data): bool
     {
-        return User::query()->findOrFail($id)->update($data);
+        return User::findOrFail($id)->update($data);
     }
 
     public function delete(int $id): bool
     {
-        return User::query()->findOrFail($id)->delete();
+        return User::findOrFail($id)->delete();
     }
 }

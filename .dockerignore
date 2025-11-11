@@ -29,6 +29,7 @@ Thumbs.db
 # Docker volumes / config (não copiar para imagem)
 .docker/nginx
 .docker/db_data
+.docker/localstack
 
 # Outros arquivos temporários
 *.log

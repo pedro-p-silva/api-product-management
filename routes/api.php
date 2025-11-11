@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/documentation', function () {
+    return view('docs.swagger');
+});
+
 Route::prefix('v1')->group(function () {
     Route::post('/users', [UserController::class, 'createUser']);
     Route::post('login', [AuthController::class, 'login']);

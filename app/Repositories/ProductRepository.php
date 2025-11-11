@@ -5,23 +5,22 @@ namespace App\Repositories;
 use App\Models\Product;
 use App\Repositories\Interfaces\BaseRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
 
 class ProductRepository implements BaseRepositoryInterface
 {
     public function getAll(): Collection
     {
-        return Product::all();
+        return Product::select('id', 'name', 'description', 'price', 'status')->get();
     }
 
-    public function getById(int $id): Model
+    public function getById(int $id): Product
     {
-        return Product::query()->findOrFail($id);
+        return Product::select('id', 'name', 'description', 'price', 'status')->findOrFail($id);
     }
 
-    public function create(array $data): Model
+    public function create(array $data): Product
     {
-        return Product::query()->create($data);
+        return Product::create($data);
     }
 
     public function update(int $id, array $data): bool
